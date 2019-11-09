@@ -1,0 +1,4 @@
+#ignore all the following folder and files
+build
+server
+client
