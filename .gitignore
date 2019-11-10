@@ -1,4 +1,2 @@
 #ignore all the following folder and files
-build
-build_server
-build_client
+build*
