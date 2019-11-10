@@ -19,12 +19,12 @@ void setServerinfo(const addrinfo_t *serverinfo)
 {
 	if(!This){
 		This = (addrinfo_t *) malloc(sizeof(addrinfo_t));
-		memcpy(This, serverinfo, sizeof(addrinfo_t));
+		memcpy((addrinfo_t *)This,(addrinfo_t *) serverinfo, sizeof(addrinfo_t));
 	}
 	else{
 		free(This);
 		This = (addrinfo_t *) malloc(sizeof(addrinfo_t));
-		memcpy(This, serverinfo, sizeof(addrinfo_t));
+		memcpy((addrinfo_t *)This,(addrinfo_t *) serverinfo, sizeof(addrinfo_t));
 	}
 
 }
@@ -64,9 +64,9 @@ const int sendtoServer(const int sockfd)
 		perror("client: sendto ");
 		exit(1);
 	}
-	memcpy(&server_addr, serverinfo->ai_addr, sizeof(struct sockaddr));
+	memcpy((struct sockaddr *)&server_addr, (struct sockaddr *) serverinfo->ai_addr, sizeof(struct sockaddr));
 
-	printf("client: sent %d bytes to %s \n", inet_ntop(server_addr.ss_family, (struct sockaddr *)&server_addr, s, sizeof s));
+	printf("client: sent %d bytes to %s \n", numBytes, inet_ntop(server_addr.ss_family, (struct sockaddr *)&server_addr, s, sizeof s));
 
 	return numBytes;
 }
