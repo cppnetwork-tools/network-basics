@@ -5,24 +5,43 @@ namespace networklib{
 
 class tcpBase{
 public:
-	virtual ~tcpwrapper() = default;
+	virtual ~tcpBase() = default;
 
-	tcpWrapper(const tcpwrapper&) = delete;
-	tcpwrapper(tcpwrapper&&) = delete;
-	tcpwrapper &operator=(const tcpwrapper&) = delete;
-	tcpwrapper &operator=(tcpwrapper&&) = delete;
+	tcpBase(const tcpBase&) = delete;
+	tcpBase(tcpBase&&) = delete;
+	tcpBase &operator=(const tcpBase&) = delete;
+	tcpBase &operator=(tcpBase&&) = delete;
 
 	 
 
 private:
-	explicit tcpWrapper() = default;
+	explicit tcpBase() = default;
 
 protected:
-	int createTcpSocket() = 0;
-	int readFrom() = 0;
-	int writeFrom() = 0;
+	virtual int createTCPSocket() = 0;
+	virtual int tcpRead() = 0;
+	virtual int tcpWrite() = 0;
 
- 
+};
+
+
+class udpBase{
+public:
+	virtual ~udpBase() = default;
+
+	udpBase(const udpBase&) = delete;
+	udpBase(udpBase&&) = delete;
+	udpBase &operator=(const udpBase&) = delete;
+	udpBase &operator=(udpBase&&) = delete;
+
+private:
+	explicit tcpBase() = default;
+
+protected:
+	virtual int createUDPSocket() = 0;
+	virtual int udpRead() = 0;
+	virtual int udpWrite() = 0;
+
 };
 
 } //networklib
