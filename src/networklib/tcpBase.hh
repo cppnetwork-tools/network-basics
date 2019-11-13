@@ -35,7 +35,7 @@ public:
 	udpBase &operator=(udpBase&&) = delete;
 
 private:
-	explicit tcpBase() = default;
+	explicit udpBase() = default;
 
 protected:
 	virtual int createUDPSocket() = 0;
